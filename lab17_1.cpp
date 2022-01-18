@@ -27,10 +27,10 @@ int main(){
 	findRowSum(dPtr,sum1,N,M);
 	showData(sum1,N,1);
 	
-	/*cout << "---------------------------------------------\n";
+	cout << "---------------------------------------------\n";
 	
 	findColSum(dPtr,sum2,N,M); 
-	showData(sum2,1,M);*/
+	showData(sum2,1,M);
 	
 }
 
@@ -54,22 +54,28 @@ void findRowSum(const double *p,double *sum1,int N,int M)
 	double sum=0;
 	for(int i=0;i<N;i++)
 	{
-		
 		for (int  j = 0; j < M; j++)
 		{
-			sum+=(*(p+((i*N)+j)));			
+			sum+=*(p+(i*M)+j);			
 		}
-		cout<<sum <<endl;
-		
-		*(sum1+(i*N))=sum;
+		*(sum1+i)=sum;
 		sum =0;
 	}
 
 }
 
-void findColSum(const double *p,double *sum1,int N,int M)
+void findColSum(const double *p,double *sum2,int N,int M)
 {
-
+	double sum=0;
+	for(int i=0;i<M;i++)
+	{
+		for (int  j = 0; j < N; j++)
+		{
+			sum+=*(p+(j*M)+i);			
+		}
+		*(sum2+i)=sum;
+		sum =0;
+	}
 
 
 }
